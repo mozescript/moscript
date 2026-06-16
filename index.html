@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="摹字是免費的線上中文描字帖產生器，內建唐詩、宋詞、經典散文共百餘篇，支援楷書字型、手寫字型等多種免費字型，一鍵生成PDF字帖，可匯入筆記App或列印練字。">
+<meta name="keywords" content="描字帖,字帖產生器,硬筆楷書,練字,唐詩,宋詞,PDF字帖,GoodNotes,摹字,楷書字型,手寫字型,免費字型字帖,中文練字字型">
+<title>摹字 MoScript · 免費中文描字帖產生器｜唐詩宋詞硬筆楷書 PDF</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "摹字 MoScript",
+  "url": "https://moscript.tw",
+  "description": "摹字是免費的線上中文描字帖產生器，內建唐詩、宋詞、經典散文共百餘篇，支援楷書字型、手寫字型等多種免費字型，一鍵生成PDF字帖，可直接匯入筆記App或列印練字。適合硬筆楷書初學者、想改善字跡的學生與上班族。",
+  "applicationCategory": "EducationApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "TWD"
+  },
+  "featureList": [
+    "唐詩精選百餘首",
+    "宋詞精選百餘首",
+    "經典散文二十篇",
+    "多種楷書與手寫字型",
+    "米字格、田字格、圓框格線樣式",
+    "一鍵生成PDF字帖",
+    "支援GoodNotes等筆記App匯入",
+    "支援列印使用",
+    "電子檔與高解析印刷版"
+  ],
+  "audience": {
+    "@type": "Audience",
+    "audienceType": "硬筆楷書初學者、想改善字跡的學生與上班族、追求手寫美感的使用者"
+  },
+  "inLanguage": "zh-TW",
+  "isAccessibleForFree": true,
+  "keywords": "描字帖,字帖產生器,硬筆楷書,練字,唐詩,宋詞,PDF字帖,GoodNotes,楷書字型,手寫字型,摹字",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "email": "mozescript.contact@gmail.com",
+    "contactType": "customer service"
+  }
+}
+</script>
+
+</head>
+<body>
+
+<div class="site-wrapper">
+
+  <!-- 上方廣告 -->
+  <div class="ad-top"></div>
+
+  <div class="main-row">
+
+    <!-- 左側廣告 -->
+    <div class="ad-side">
+      <div class="ad-side-inner"></div>
+    </div>
+
+    <!-- 主內容 -->
+    <div class="content">
+
+      <div class="site-header">
+        <h1>摹字 · 描字帖產生器</h1>
+        <p>MoScript · 免費線上中文描字帖產生器</p>
+      </div>
+
+      <!-- 手機版廣告 -->
+      <div class="ad-mobile"></div>
+
+      <div class="panel">
+        <h2>練習文字</h2>
+        <textarea id="txt" placeholder="輸入想描的文字，標點符號會自動顯示在格子右下角…"></textarea>
+      <label style="display:inline-flex;align-items:center;gap:7px;margin-top:10px;font-size:12px;color:#A09890;cursor:pointer;">
+        <input type="checkbox" id="blank-mode" style="width:14px;height:14px;cursor:pointer;accent-color:#2C2C2C;">
+        空白格（只有格線，無文字）
+      </label>
+      </div>
+
+      <div class="panel">
+        <div class="collection-toggle" id="col-toggle">
+          <span>詩詞選單</span>
+          <span class="arrow" id="col-arrow">▼</span>
+        </div>
+        <div class="collection-body" id="col-body">
+          <div class="cat-tabs">
+            <div class="cat-tab active" data-cat="唐詩精選">唐詩精選</div>
+            <div class="cat-tab" data-cat="宋詞精選">宋詞精選</div>
+            <div class="cat-tab" data-cat="經典散文">經典散文</div>
+          </div>
+          <div class="search-row">
+            <input type="text" id="poem-search" placeholder="搜尋詩名或作者…">
+            <span class="sel-count" id="sel-count"></span>
+            <button class="clear-btn" id="clear-btn" style="display:none">清除</button>
+          </div>
+          <div class="poem-grid" id="poem-grid"></div>
+          <button class="dl-all-btn" id="btn-dl-all">⬇ 下載完整版 PDF（電子檔）</button>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>格式設定</h2>
+        <div class="row">
+          <label>字型</label>
+          <div class="seg" id="font-seg">
+            <button class="active" data-val="kai">全字庫正楷體</button>
+            <button data-val="iming">一明體</button>
+            <button data-val="coriander">芫荽體</button>
+            <button data-val="zense">全瀨體</button>
+            <button data-val="huninn">粉圓體</button>
+            <button data-val="chenyu">辰宇落雁體</button>
+          </div>
+        </div>
+        <div class="row">
+          <label>格線樣式</label>
+          <div class="seg" id="grid-seg">
+            <button class="active" data-val="1">樣式1 米字格</button>
+            <button data-val="2">樣式2 田字格</button>
+            <button data-val="3">樣式3 圓框</button>
+            <button data-val="4">樣式4 圓框田字</button>
+          </div>
+        </div>
+        <div class="row">
+          <label>每列字數</label>
+          <input type="number" id="cols" value="12" min="8" max="14">
+        </div>
+        <div class="row">
+          <label>格底顏色</label>
+          <div class="seg" id="bg-seg">
+            <button class="active" data-val="#FFFFFF">白色</button>
+            <button data-val="#F7F3EC">米色</button>
+          </div>
+        </div>
+        <div class="row">
+          <label>外框顏色</label>
+          <div class="swatches" id="color-sw">
+            <div class="swatch active" data-c="#4A6FA5" data-name="靛藍" style="background:#4A6FA5"></div>
+            <div class="swatch" data-c="#8B6F5E" data-name="可可棕" style="background:#8B6F5E"></div>
+            <div class="swatch" data-c="#4A7A5A" data-name="苔綠" style="background:#4A7A5A"></div>
+            <div class="swatch" data-c="#5C4A7A" data-name="暮紫" style="background:#5C4A7A"></div>
+            <div class="swatch" data-c="#8B3A3A" data-name="煙燻紅" style="background:#8B3A3A"></div>
+          </div>
+          <span class="swatch-label" id="color-name">靛藍</span>
+        </div>
+        <div class="row">
+          <label>字跡深淺</label>
+          <div class="seg" id="op-seg">
+            <button data-val="0.13">淺</button>
+            <button class="active" data-val="0.22">中</button>
+            <button data-val="0.35">深</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="preview-area">
+        <canvas id="preview-canvas"></canvas>
+      </div>
+      <div class="page-nav">
+        <button id="btn-prev" disabled>← 上一頁</button>
+        <span id="page-indicator">1 / 1</span>
+        <button id="btn-next" disabled>下一頁 →</button>
+      </div>
+      <div class="dl-row">
+        <button id="btn-dl">下載電子檔</button>
+        <button id="btn-dl-print">下載印刷檔</button>
+      </div>
+
+      <!-- 手機版底部廣告 -->
+      <div class="ad-mobile"></div>
+
+      <div class="notice">
+  <div class="notice-inner">
+    <p class="notice-title">關於摹字</p>
+    <p style="margin-bottom:14px;">用最美的字帖，練出最好的字。摹字是一款免費的線上描字帖產生器，內建唐詩、宋詞、經典散文共百餘篇，支援楷書字型、手寫字型等多種免費開源字型，一鍵生成 PDF 字帖，可直接匯入筆記 App 或列印使用。適合硬筆楷書初學者、想改善字跡的學生與上班族，以及追求手寫美感的你。無論是練字入門、臨摹古詩詞，還是製作個人專屬字帖，摹字都能輕鬆幫你完成。</p>
+    <p class="notice-title">常見問題</p>
+    <ul>
+      <li><strong>什麼是摹字？</strong> 摹字（MoScript）是免費的中文描字帖線上產生器，讓你選詩詞、選字型、一鍵下載 PDF，不需要安裝任何軟體。</li>
+      <li><strong>摹字支援哪些內容？</strong> 內建唐詩、宋詞、經典散文共百餘篇，也可以自訂輸入任意文字。</li>
+      <li><strong>摹字支援哪些字型？</strong> 內建全字庫正楷體、辰宇落雁體、全瀨體、芫荽體、一明體、jf粉圓體等多種免費楷書與手寫字型，皆為合法開源授權可商業使用。</li>
+      <li><strong>字帖可以在 iPad 使用嗎？</strong> 可以，下載 PDF 後直接匯入 GoodNotes、Notability 等筆記 App 即可練字。</li>
+      <li><strong>字帖可以列印嗎？</strong> 可以，提供高解析度印刷版 PDF，列印後即可用鋼筆或原子筆描字練習。</li>
+    </ul>
+  </div>
+</div>
+<div class="notice">
+  <details>
+  <summary style="font-size:10px;font-weight:500;color:#B0A898;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;list-style:none;padding:18px 20px;background:#FEFCF9;border-radius:10px;border:0.5px solid #DDD8D0;">注意事項 ／ 免責聲明</summary>
+  <div class="notice-inner" style="border-top:none;border-radius:0 0 10px 10px;margin-top:-1px;">
+    <p class="notice-title" style="display:none;">注意事項</p>
+    <ul>
+      <li>本網站提供之描字帖僅供個人練習使用，請勿將生成內容用於商業印刷或販售。</li>
+      <li>本網站所使用之字型皆為合法開源授權，允許商業使用。</li>
+      <li>部分字型字庫有限，若輸入文字未能正確顯示，請嘗試切換其他字型。</li>
+      <li>生成之 PDF 檔案中文字以圖像方式呈現，無法複製或搜尋文字內容。</li>
+    </ul>
+    <p class="notice-title">免責聲明</p>
+    <ul>
+      <li>本網站對生成內容之正確性不作任何保證，古詩詞內容依通行版本收錄，如有版本差異請以原典為準。</li>
+      <li>自訂文字欄位由使用者自行輸入，本網站不對使用者輸入之任何內容負責，包含但不限於不雅、違法或侵權文字。</li>
+      <li>本網站不對因使用本服務而產生之任何損失負責。</li>
+      <li>字型版權歸各原作者所有，詳見頁面下方字型來源標註。</li>
+    </ul>
+  </div>
+  </details>
+</div>
+
+<div class="notice">
+  <details>
+  <summary style="font-size:10px;font-weight:500;color:#B0A898;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;list-style:none;padding:18px 20px;background:#FEFCF9;border-radius:10px;border:0.5px solid #DDD8D0;">隱私權政策</summary>
+  <div class="notice-inner" style="border-top:none;border-radius:0 0 10px 10px;margin-top:-1px;">
+    <p class="notice-title" style="display:none;">隱私權政策</p>
+    <p style="margin-bottom:0;">最後更新：2026 年 6 月</p>
+    <p style="font-weight:500;color:#888;margin:8px 0 2px;"><strong>一、資料蒐集</strong></p>
+    <p style="margin-bottom:0;">摹字（MoScript）不蒐集、儲存或出售任何個人識別資料。本服務所有功能均在您的裝置本機執行，您輸入的文字內容不會上傳至任何伺服器。</p>
+    <p style="font-weight:500;color:#888;margin:8px 0 2px;"><strong>二、廣告服務</strong></p>
+    <p style="margin-bottom:0;">本網站使用 Google AdSense 投放廣告。Google 可能使用 Cookie 及類似技術，根據您過去造訪本網站或其他網站的記錄提供個人化廣告。您可至 <a href="https://adssettings.google.com" target="_blank" style="color:#A09890;">Google 廣告設定</a> 管理或關閉個人化廣告。</p>
+    <p style="font-weight:500;color:#888;margin:8px 0 2px;"><strong>三、Cookie</strong></p>
+    <p style="margin-bottom:0;">本網站本身不使用 Cookie。第三方廣告服務商（如 Google AdSense）可能使用 Cookie，詳情請參閱 <a href="https://policies.google.com/privacy" target="_blank" style="color:#A09890;">Google 隱私權政策</a>。</p>
+    <p style="font-weight:500;color:#888;margin:8px 0 2px;"><strong>四、第三方連結</strong></p>
+    <p style="margin-bottom:0;">本網站頁尾包含字型來源連結，點擊後將跳轉至第三方網站，本網站不對第三方網站的隱私權政策負責。</p>
+    <p style="font-weight:500;color:#888;margin:8px 0 2px;"><strong>五、聯絡我們</strong></p>
+    <p>如有任何隱私權相關問題，請來信：<a href="mailto:mozescript.contact@gmail.com" style="color:#A09890;">mozescript.contact@gmail.com</a></p>
+  </div>
+  </details>
+</div>
+<footer style="text-align:center;padding:12px 0 24px;font-size:11px;color:#bbb;">有任何問題歡迎來信：<a href="mailto:mozescript.contact@gmail.com" style="color:#bbb;">mozescript.contact@gmail.com</a>　｜　字型來源：<a href="https://data.gov.tw/dataset/5961" target="_blank" style="color:#bbb;">全字庫正楷體 © 國家發展委員會</a>　｜　<a href="https://github.com/ichitenfont/I.Ming" target="_blank" style="color:#bbb;">一明體 © 一點字型</a></footer>
+
+    </div>
+
+    <!-- 右側廣告 -->
+    <div class="ad-side">
+      <div class="ad-side-inner"></div>
+    </div>
+
+  </div>
+
+  <!-- 下方廣告 -->
+  <div class="ad-bottom"></div>
+
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
